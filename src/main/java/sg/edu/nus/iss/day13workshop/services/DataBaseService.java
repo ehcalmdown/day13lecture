@@ -10,7 +10,7 @@ import java.util.Scanner;
 @Service
 public class DataBaseService {
 
-    private File dataDir = new File("some directory");
+    private File dataDir = new File("./data");
 
     public File getDataDir(){
         return dataDir;
