@@ -22,5 +22,12 @@ public class DataBaseService {
 public boolean isdDataDirValid(){
         return dataDir.exists() && dataDir.isDirectory() && dataDir.canWrite();
     }
+    public boolean save() {
+        return false;
+    }
+
+    public void read(String fileId){
+
+    }
 
 }
