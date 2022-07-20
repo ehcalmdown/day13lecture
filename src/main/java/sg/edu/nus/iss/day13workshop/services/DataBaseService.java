@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 import sg.edu.nus.iss.day13workshop.models.Contact;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Scanner;
 
 @Service
 public class DataBaseService {
 
-    private File dataDir = new File("./data");
+    private File dataDir = new File("Some Directory");
 
     public File getDataDir(){
         return dataDir;
@@ -45,15 +49,20 @@ public boolean isdDataDirValid(){
 
     public Contact read(String fileId){
         try{
-            File f = new File(this.dataDir, fileId);
-            Scanner myReader = new Scanner(f);
-            while(myReader.hasNextLine()){
-                System.out.println(myReader.nextLine());
-
-
-            }
-            myReader.close();
             Contact contact = new Contact();
+            Path filePath = new File(this.dataDir, fileId).toPath();
+            Charset charset = Charset.forName("utf-8");
+            List<String> stringVal = Files.readAllLines(filePath, charset);
+
+            contact.setName(stringVal.get(1));
+            contact.setEmail(stringVal.get(2));
+            contact.setPhone(stringVal.get(3));
+//            File f = new File(this.dataDir, fileId);
+//            Scanner myReader = new Scanner(f);
+//            while(myReader.hasNextLine()){
+//                System.out.println(myReader.nextLine());
+//            }
+//            myReader.close();
             return contact;
         }catch(IOException ex){
             System.err.println("Error " + ex.getMessage());
