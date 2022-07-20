@@ -29,7 +29,7 @@ public class Day13workshopApplication implements ApplicationRunner {
 			final String dataDir = args.getOptionValues("dataDir").get(0);
 			dbSvc.setDataDir(new File(dataDir));
 			if (!dbSvc.isdDataDirValid()) {
-				System.err.println("Does not exist or unwritable");
+				System.err.printf("%s Does not exist or unwritable", dataDir);
 				System.exit(-1);
 			}
 			System.out.printf("Using %s as data directory \n", dataDir);
@@ -40,7 +40,7 @@ public class Day13workshopApplication implements ApplicationRunner {
 	}
 
 	public boolean save() {
-
+		return false;
 	}
 
 	public void read(String fileId){
