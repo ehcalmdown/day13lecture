@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.day13workshop;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.DefaultApplicationArguments;
@@ -12,6 +13,7 @@ import java.io.File;
 
 @SpringBootApplication
 public class Day13workshopApplication implements ApplicationRunner {
+	@Autowired
 	DataBaseService dbSvc;
 
 	public static void main(String[] args) {
